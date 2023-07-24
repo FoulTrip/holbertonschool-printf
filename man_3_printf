@@ -1,0 +1,47 @@
+/*
+NAME
+_printf - Simple implementation of the printf function to print strings and values to the console.
+
+SINOPSIS
+_printf [format, ...]
+
+DESCRIPTION
+_printf is a custom function that allows printing strings and values with specific formats to the console. It is similar to the standard C library's printf function but supports a limited set of format specifiers.
+
+The _printf function supports the following format specifiers:
+
+%c: Prints a single character.
+%s: Prints a string of characters.
+%%: Prints a percent character (%).
+%d or %i: Prints an integer number in decimal format.
+If an unrecognized format specifier is encountered, the % character followed by the unknown character will be printed.
+
+AUXILIARY FUNCTIONS
+print_char - Prints a single character to the console.
+
+int print_char(char c);
+print_string - Prints a string of characters to the console.
+
+int print_string(const char *str);
+print_int - Prints an integer number in decimal format to the console.
+
+int print_int(int num);
+
+EXAMPLES
+#include "main.h"
+
+int main(void)
+{
+    _printf("Hello, world!\n");
+    _printf("A character: %c\n", 'A');
+    _printf("A string: %s\n", "Hello");
+    _printf("A percent sign: %%\n");
+    _printf("Integer: %d\n", 42);
+
+    return (0);
+}
+
+AUTHOR
+David vasquez Mahecha
+
+*/
