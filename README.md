@@ -3,7 +3,7 @@
 # Description
 This project is a simple implementation of the printf function in C, allowing printing of strings and values with specific formats to the console. It provides a limited set of format specifiers, similar to the standard C library's printf function.
 
-#Functionality
+# Functionality
 The custom _printf function supports the following format specifiers:
  - '%c': Prints a single character.
  - '%s': Prints a string of characters.
