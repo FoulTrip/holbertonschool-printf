@@ -5,7 +5,7 @@
 int print_char(char c)
 {
     putchar(c);
-    return 1;
+    return (1);
 }
 
 // Auxiliary function for print a chain of characters in the standard output
@@ -19,13 +19,13 @@ int print_string(const char *str)
         str++;
         count++;
     }
-    return count;
+    return (count);
 }
 
 // Auxiliary function for print a Integer
 int print_int(int num)
 {
-    return printf("%d", num);
+    return (printf("%d", num));
 }
 
 // Principal function _printf
@@ -87,7 +87,7 @@ int _printf(const char *format, ...)
     }
 
     va_end(args);
-    return count;
+    return (count);
 }
 
 int main()
@@ -98,5 +98,5 @@ int main()
     _printf("A percent sign: %%\n");
     _printf("Integer: %d\n", 42);
 
-    return 0;
+    return (0);
 }
