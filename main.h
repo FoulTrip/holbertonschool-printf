@@ -1,5 +1,5 @@
-#ifndef HELPERS_H
-#define HELPERS_H
+#ifndef MAIN_H
+#define MAIN_H
 
 int print_char(char c);
 int print_string(const char *str);

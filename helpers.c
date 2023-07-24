@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdarg.h>
-#include "helpers.h"
+#include "main.h"
 
 /* Function for print a chain of characters in the output */
 int print_char(char c) 

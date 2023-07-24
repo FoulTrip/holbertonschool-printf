@@ -1,7 +1,6 @@
-#include <stdio.h>
-#include "helpers.h"
+#include "main.h"
 
-int main()
+int main(void)
 {
     /* Examples outputs */
     _printf("Let's try to printf a simple sentence.\n");
