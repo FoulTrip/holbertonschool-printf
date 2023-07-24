@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdarg.h>
+#include "helpers.h"
 
 /* Function for print a chain of characters in the output */
 int print_char(char c) 
@@ -89,16 +90,4 @@ int _printf(const char *format, ...)
 
     va_end(args);
     return (count);
-}
-
-int main()
-{
-    /* Examples outputs */
-    _printf("Let's try to printf a simple sentence.\n");
-    _printf("String:[%s]\n", "I am a string !");
-    _printf("Percent:[%%]\n");
-    _printf("Unknown:[%r]\n");
-    _printf("Int:[%i]\n", 24);
-
-    return (0);
 }
