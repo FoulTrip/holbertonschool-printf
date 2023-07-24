@@ -1,14 +1,14 @@
 #include <stdio.h>
 #include <stdarg.h>
 
-// Function for print a chain of characters in the standard output
+// Function for print a chain of characters in the output
 int print_char(char c)
 {
     putchar(c);
     return (1);
 }
 
-// Auxiliary function for print a chain of characters in the standard output
+// Auxiliary function for print a chain of characters in the output
 int print_string(const char *str)
 {
     int count = 0;
@@ -34,7 +34,7 @@ int _printf(const char *format, ...)
     va_list args;
     va_start(args, format);
 
-    int count = 0; // Cuento los caracteres impresos
+    int count = 0; // count the print characters 
 
     while (*format)
     {
@@ -71,7 +71,7 @@ int _printf(const char *format, ...)
             }
             default:
             {
-                // Si encuentro un carácter no reconocido después del '%', lo imprimo
+                // If i find an unrecognized character after the '%', i print it.
                 count += print_char('%');
                 count += print_char(*format);
                 break;
@@ -92,6 +92,7 @@ int _printf(const char *format, ...)
 
 int main()
 {
+    // Examples outputs
     _printf("Hello, world!\n");
     _printf("A character: %c\n", 'A');
     _printf("A string: %s\n", "Hello");
