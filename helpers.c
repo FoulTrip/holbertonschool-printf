@@ -60,7 +60,37 @@ int print_string(const char *str)
  */
 int print_int(int num)
 {
-    return (printf("%d", num));
+    int is_negative, i;
+    char digits[12];
+
+    if (num == 0) 
+    {
+        putchar('0');
+    }
+
+    if (num < 0)
+    {
+        is_negative = 1;
+        num = -num;
+    }
+
+    while (num > 0) 
+    {
+        digits[i++] = '0' + (num % 10);
+        num /= 10;
+    }
+
+    if (is_negative)
+    {
+        digits[i++] = '-';
+    }
+
+    while (i > 0)
+    {
+        putchar(digits[--i]);
+    }
+
+    return i;
 }
 
 /**
