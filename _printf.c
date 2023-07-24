@@ -1,14 +1,14 @@
 #include <stdio.h>
 #include <stdarg.h>
 
-// Function for print a chain of characters in the output
-int print_char(char c)
+/* Function for print a chain of characters in the output */
+int print_char(char c) 
 {
     putchar(c);
     return (1);
 }
 
-// Auxiliary function for print a chain of characters in the output
+/* Auxiliary function for print a chain of characters in the output */
 int print_string(const char *str)
 {
     int count = 0;
@@ -22,26 +22,27 @@ int print_string(const char *str)
     return (count);
 }
 
-// Auxiliary function for print a Integer
+/* Auxiliary function for print a Integer */
 int print_int(int num)
 {
     return (printf("%d", num));
 }
 
-// Principal function _printf
+/* Principal function _printf */
 int _printf(const char *format, ...)
 {
-    va_list args;
-    va_start(args, format);
+    char specifier;
+    int count = 0; /*count the print characters */
 
-    int count = 0; // count the print characters 
+    va_list args;
+    va_start(args, format); 
 
     while (*format)
     {
         if (*format == '%')
         {
-            format++; // Avanzo despues del '%'
-            char specifier = *format;
+            format++; /* Avanzo despues del '%' */
+            specifier = *format;
 
             switch (specifier)
             {
@@ -63,7 +64,7 @@ int _printf(const char *format, ...)
                 break;
             }
             case 'i':
-            case 'd': 
+            case 'd':
             {
                 int num = va_arg(args, int);
                 count += print_int(num);
@@ -71,7 +72,7 @@ int _printf(const char *format, ...)
             }
             default:
             {
-                // If i find an unrecognized character after the '%', i print it.
+                /* If i find an unrecognized character after the '%', i print it. */
                 count += print_char('%');
                 count += print_char(*format);
                 break;
@@ -92,12 +93,12 @@ int _printf(const char *format, ...)
 
 int main()
 {
-    // Examples outputs
-    _printf("Hello, world!\n");
-    _printf("A character: %c\n", 'A');
-    _printf("A string: %s\n", "Hello");
-    _printf("A percent sign: %%\n");
-    _printf("Integer: %d\n", 42);
+    /* Examples outputs */
+    _printf("Let's try to printf a simple sentence.\n");
+    _printf("String:[%s]\n", "I am a string !");
+    _printf("Percent:[%%]\n");
+    _printf("Unknown:[%r]\n");
+    _printf("Int:[%i]\n", 24);
 
     return (0);
 }
