@@ -13,11 +13,18 @@
  */
 int main(void)
 {
-    _printf("Let's try to printf a simple sentence.\n");
-    _printf("String:[%s]\n", "I am a string !");
-    _printf("Percent:[%%]\n");
-    _printf("Unknown:[%r]\n");
-    _printf("Int:[%i]\n", 24);
+    int num1 = 12, num2 = 16;
+    int sum = num1 + num2;
+    int res = num1 - num2;
+    int mul = num1 * num2;
+    int div = num1 / num2;
+    int porc = num1 % num2;
+
+    _printf("La suma de %i y %d es: %i\n", num1, num2, sum);
+    _printf("La resta de %i y %d es: %i\n", num1, num2, res);
+    _printf("La division de %i y %d es: %i\n", num1, num2, div);
+    _printf("La multiplicacion de %i y %d es: %i\n", num1, num2, mul);
+    _printf("El porcentaje entre %i y %d es: %i\n", num1, num2, porc);
 
     return (0);
 }
