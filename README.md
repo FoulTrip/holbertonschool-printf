@@ -22,11 +22,13 @@ The project includes three auxiliary functions that are used by the '_print' fun
 
 To compile the project, use the following command:
 ```bash
-gcc -Wall -Werror -Wextra -pedantic -std=gnu89 -Wno-format *.c -o main
+gcc -Wall -Werror -Wextra -pedantic -std=gnu89 -c main.c
+gcc -Wall -Werror -Wextra -pedantic -std=gnu89 -c helper.c
+gcc -o _printf main.o helper.o
 ```
 To run the program, execute the compiled binary:
 ```bash
-./main
+./_printf
 ```
 
 # Examples
