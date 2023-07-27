@@ -90,7 +90,7 @@ int print_int(int num)
         putchar(digits[--i]);
     }
 
-    return i;
+    return (i);
 }
 
 /**
