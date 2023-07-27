@@ -24,7 +24,7 @@ To compile the project, use the following command:
 ```bash
 gcc -Wall -Werror -Wextra -pedantic -std=gnu89 -c main.c
 gcc -Wall -Werror -Wextra -pedantic -std=gnu89 -c helpers.c
-gcc -o _printf main.o helper.o
+gcc -o _printf main.o helpers.o
 ```
 To run the program, execute the compiled binary:
 ```bash
