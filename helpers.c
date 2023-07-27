@@ -110,7 +110,7 @@ int print_int(int num)
 int _printf(const char *format, ...)
 {
     char specifier;
-    int count = 0; /*count the print characters */
+    int count = 0; 
 
     va_list args;
     va_start(args, format); 
@@ -119,7 +119,7 @@ int _printf(const char *format, ...)
     {
         if (*format == '%')
         {
-            format++; /* Avanzo despues del '%' */
+            format++;
             specifier = *format;
 
             switch (specifier)
@@ -150,7 +150,6 @@ int _printf(const char *format, ...)
             }
             default:
             {
-                /* If i find an unrecognized character after the '%', i print it. */
                 count += print_char('%');
                 count += print_char(*format);
                 break;
