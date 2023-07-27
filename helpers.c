@@ -34,13 +34,14 @@ int print_string(const char *str)
 {
 	int count = 0;
 	int lenght = 0;
+	char *copy_string;
 
 	while (str[lenght] != '\0')
 	{
 		lenght++;
 	}
 
-	char *copy_string = (char *)malloc((lenght + 1) * sizeof(char));
+	*copy_string = (char *)malloc((lenght + 1) * sizeof(char));
 	if (copy_string == NULL)
 	{
 		return (0);
