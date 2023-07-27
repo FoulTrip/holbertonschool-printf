@@ -28,6 +28,8 @@ int print_char(char c)
  * The function continues until it reaches the null-terminating
  * character ('\0') of the string.
  *
+ * @str: Pointer to the null-terminated string to be printed.
+ *
  * Return: Returns the number of characters printed.
  */
 int print_string(const char *str)
@@ -49,6 +51,8 @@ int print_string(const char *str)
  * This function prints the provided integer to
  * the standard output using the printf function.
  *
+ * @num: The integer to be printed.
+ *
  * Return: Returns the number of characters printed
  *         (excluding the null byte used to end
  *         output to strings).
@@ -61,7 +65,6 @@ int print_int(int num)
     if (num == 0)
     {
         putchar('0');
-	return (1);
     }
 
     if (num < 0)
@@ -74,6 +77,11 @@ int print_int(int num)
     {
         digits[i++] = '0' + (num % 10);
         num /= 10;
+    }
+
+    if (is_negative)
+    {
+        digits[i++] = '-';
     }
 
     while (i > 0)
