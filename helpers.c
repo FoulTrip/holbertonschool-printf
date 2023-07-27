@@ -12,7 +12,6 @@
  *
  * Return: Returns 1 if the character was printed successfully.
  */
-
 int print_char(char c)
 {
 	putchar(c);
@@ -31,7 +30,6 @@ int print_char(char c)
  *
  * Return: The number of character string to be printed
  */
-
 int print_string(const char *str)
 {
 	int count = 0;
@@ -42,8 +40,7 @@ int print_string(const char *str)
 		lenght++;
 	}
 
-	char *copy_string = malloc((lenght + 1) * sizeof(char));
-
+	char *copy_string = (char *)malloc((lenght + 1) * sizeof(char));
 	if (copy_string == NULL)
 	{
 		return (0);
