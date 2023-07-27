@@ -40,7 +40,7 @@ int print_string(const char *str)
     return (count);
 }
 
-void print_positive_int(int num, char digits[], int* num_digits)
+void print_positive_int(int num, char digits[], int *num_digits)
 {
     *num_digits = 0;
 
