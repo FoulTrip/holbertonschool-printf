@@ -5,7 +5,7 @@
 /**
  * print_char - Print a character to the output
  * @c: The character to be printed
- * 
+ *
  * This function prints the provided character
  * to the standard output.
  *
@@ -109,7 +109,7 @@ int _printf(const char *format, ...)
 	int count = 0;
 
 	va_list args;
-	va_list(args, format);
+	va_list (args, format);
 
 	while (*format)
 	{
@@ -118,38 +118,34 @@ int _printf(const char *format, ...)
 			format++;
 			specifier = *format;
 
-			switch (specifier)
+			if (specifier == 'c')
 			{
-				case 'c':
-				{
-					charr c = va_arg(args, int);
-					count += print_char(c);
-					break;
-				}
-				case 's':
-				{
-					char *str = va_arg(args, char *);
-					count += print_string(str);
-					break;
-				}
-				case '%':
-				{
-					count += print_char('%');
-					break;
-				}
-				case 'i':
-				case 'd':
-				{
-					int num = va_arg(args, int);
-					count += print_int(num);
-					break;
-				}
-				default:
-				{
-					count += print_char('%');
-					count += print_char(*format);
-					break;
-				}
+				char c = va_arg(args, int);
+				count += print_char(c);
+				break;
+			}
+			else if (specifier == 's')
+			{
+				char *str = va_arg(args, char *);
+				count += print_string (str);
+				break;
+			}
+			else if (specifier == '%')
+			{
+				count += print_char('%');
+				break;
+			}
+			else if (specifier == 'i' || specifier == 'd')
+			{
+				int num = va_arg(args, int);
+				count += print_int (num);
+				break;
+			}
+			else
+			{
+				count += print_char('%');
+				count += print_char(*format);
+				break;
 			}
 		}
 		else
