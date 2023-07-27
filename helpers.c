@@ -34,6 +34,7 @@ int print_char(char c)
 int print_string(const char *str)
 {
 	int count = 0;
+	int lenght = 0;
 
 	while (str[lenght] != '\0')
 	{
