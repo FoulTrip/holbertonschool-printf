@@ -127,7 +127,7 @@ int _printf(const char *format, ...)
 			else if (specifier == 's')
 			{
 				char *str = va_arg(args, char *);
-				count += print_string (str);
+				count += print_string(str);
 				break;
 			}
 			else if (specifier == '%')
