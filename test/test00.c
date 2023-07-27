@@ -6,6 +6,6 @@ int main(void) {
     int result = num1 + num2;
 
     _printf("The sum of the numbers (%i) and (%i) is: %i", num1, num2, result);
-    
-    return 0;
+
+    return (0);
 }
