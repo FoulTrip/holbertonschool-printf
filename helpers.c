@@ -122,34 +122,38 @@ int _printf(const char *format, ...)
             format++;
             specifier = *format;
 
-            if (specifier == 'c')
+            switch (specifier)
+            {
+            case 'c':
             {
                 char c = va_arg(args, int);
                 count += print_char(c);
                 break;
             }
-            else if (specifier == 's')
+            case 's':
             {
                 char *str = va_arg(args, char *);
                 count += print_string(str);
                 break;
             }
-            else if (specifier == '%')
+            case '%':
             {
                 count += print_char('%');
                 break;
             }
-            else if (specifier == 'i' || specifier == 'd')
+            case 'i':
+            case 'd':
             {
                 int num = va_arg(args, int);
                 count += print_int(num);
                 break;
             }
-            else
+            default:
             {
                 count += print_char('%');
                 count += print_char(*format);
                 break;
+            }
             }
         }
         else
