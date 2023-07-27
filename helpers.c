@@ -35,12 +35,32 @@ int print_string(const char *str)
 {
 	int count = 0;
 
-	while (*str)
+	while (str[lenght] != '\0')
 	{
-		putchar(*str);
-		str++;
+		lenght++;
+	}
+
+	char *copy_string = (char *)malloc((lenght + 1) * sizeof(char));
+
+	if (copy_string == NULL)
+	{
+		return (0);
+	}
+
+	for (int i = 0; i < lenght; i++)
+	{
+		copy_string[i] = str[i];
+	}
+
+	while (*copy_string)
+	{
+		putchar(*copy_string);
+		copy_string++;
 		count++;
 	}
+
+	free(copy_string - lenght);
+	
 	return (count);
 }
 
