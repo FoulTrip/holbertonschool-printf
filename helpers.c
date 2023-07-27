@@ -8,9 +8,7 @@
  *
  * This function prints the provided character to the standard output.
  *
- * @c: The character to be printed.
- *
- * Return: Returns 1 if the character was printed successfully.
+ * Return: return 1 if the character was printed successfully.
  */
 int print_char(char c)
 {
@@ -28,8 +26,6 @@ int print_char(char c)
  * The function continues until it reaches the null-terminating
  * character ('\0') of the string.
  *
- * @str: Pointer to the null-terminated string to be printed.
- *
  * Return: Returns the number of characters printed.
  */
 int print_string(const char *str)
@@ -44,6 +40,37 @@ int print_string(const char *str)
     return (count);
 }
 
+void print_positive_int(int num, char digits[], int* num_digits)
+{
+    *num_digits = 0;
+
+    if (num == 0)
+    {
+        digits[(*num_digits)++] = '0';
+    }
+
+    while (num > 0)
+    {
+        digits[(*num_digits)++] = '0' + (num % 10);
+        num /= 10;
+    }
+}
+
+void print_negative_int(int num, char digits[], int* num_digits)
+{
+    *num_digits = 0;
+
+    num = -num;
+
+    while (num > 0)
+    {
+        digits[(*num_digits)++] = '0' + (num % 10);
+        num /= 10;
+    }
+
+    digits[(*num_digits)++] = '-';
+}
+
 /**
  * print_int - Prints an integer to the output
  * @num: The integer to be printed
@@ -51,45 +78,30 @@ int print_string(const char *str)
  * This function prints the provided integer to
  * the standard output using the printf function.
  *
- * @num: The integer to be printed.
- *
  * Return: Returns the number of characters printed
  *         (excluding the null byte used to end
  *         output to strings).
  */
 int print_int(int num)
 {
-    int is_negative, i;
     char digits[12];
+    int digitsNumbers;
 
-    if (num == 0)
+    if (num >= 0)
     {
-        putchar('0');
+        print_positive_int(num, digits, &digitsNumbers);
+    }
+    else
+    {
+        print_negative_int(num, digits, &digitsNumbers);
     }
 
-    if (num < 0)
+    while (digitsNumbers > 0)
     {
-        is_negative = 1;
-        num = -num;
+        putchar(digits[--digitsNumbers]);
     }
-
-    while (num > 0)
-    {
-        digits[i++] = '0' + (num % 10);
-        num /= 10;
-    }
-
-    if (is_negative)
-    {
-        digits[i++] = '-';
-    }
-
-    while (i > 0)
-    {
-        putchar(digits[--i]);
-    }
-
-    return (i);
+    
+    return digitsNumbers;
 }
 
 /**
@@ -102,8 +114,6 @@ int print_int(int num)
  * based on the provided format string and the corresponding arguments.
  * The format string may contain special format specifiers starting
  * with '%', which will be replaced by the corresponding argument values.
- *
- * @format: The format string containing format specifiers.
  *
  * Return: The total number of characters printed.
  */
@@ -124,20 +134,20 @@ int _printf(const char *format, ...)
 
             switch (specifier)
             {
-            case 'c':
-            {
-                char c = va_arg(args, int);
-                count += print_char(c);
-                break;
-            }
-            case 's':
-            {
-                char *str = va_arg(args, char *);
-                count += print_string(str);
-                break;
-            }
-            case '%':
-            {
+                case 'c':
+                {
+                    char c = va_arg(args, int);
+                    count += print_char(c);
+                    break;
+                }
+                case 's':
+                {
+                    char *str = va_arg(args, char *);
+                    count += print_string(str);
+                    break;
+                }
+                case '%':
+                {
                 count += print_char('%');
                 break;
             }
