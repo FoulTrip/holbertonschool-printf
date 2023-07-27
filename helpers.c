@@ -61,7 +61,7 @@ int print_string(const char *str)
 	}
 
 	free(copy_string - lenght);
-	
+
 	return (count);
 }
 
