@@ -48,11 +48,13 @@ void print_positive_int(int num, char digits[], int *num_digits)
     {
         digits[(*num_digits)++] = '0';
     }
-
-    while (num > 0)
+    else
     {
-        digits[(*num_digits)++] = '0' + (num % 10);
-        num /= 10;
+        while (num > 0)
+        {
+            digits[(*num_digits)++] = '0' + (num % 10);
+            num /= 10;
+        }
     }
 }
 
@@ -60,15 +62,22 @@ void print_negative_int(int num, char digits[], int* num_digits)
 {
     *num_digits = 0;
 
-    num = -num;
-
-    while (num > 0)
+    if (num == 0)
     {
-        digits[(*num_digits)++] = '0' + (num % 10);
-        num /= 10;
+        digits[(*num_digits)++] = '0';
     }
+    else
+    {
+        num = -num;
 
-    digits[(*num_digits)++] = '-';
+        while (num > 0)
+        {
+            digits[(*num_digits)++] = '0' + (num % 10);
+            num /= 10;
+        }
+
+        digits[(*num_digits)++] = '-';
+    }
 }
 
 /**
