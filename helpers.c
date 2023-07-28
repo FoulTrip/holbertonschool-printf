@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdarg.h>
 #include "main.h"
+#include <limits.h>
 
 /**
  * print_char - Print a character to the output
@@ -86,12 +87,12 @@ void print_negative_int(int num, char digits[12], int* num_digits)
     }
     else
     {
-        if (num == INT_MIN)
+        if (num == )
         {
             digits[(*num_digits)++] = '8';
-            num /= 10
+            num /= 10;
         }
-        
+
         num = -num;
 
         while (num > 0)
