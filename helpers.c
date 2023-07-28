@@ -113,6 +113,7 @@ int print_int(int num)
 {
     char digits[12];
     int digitsNumbers;
+    int count;
 
     if (num >= 0)
     {
@@ -123,7 +124,7 @@ int print_int(int num)
         print_negative_int(num, digits, &digitsNumbers);
     }
 
-    int count = digitsNumbers;
+    count = digitsNumbers;
 
     while (digitsNumbers > 0)
     {
