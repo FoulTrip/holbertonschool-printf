@@ -76,7 +76,7 @@ void print_positive_int(int num, char digits[], int *num_digits)
  *              digits of the converted number.
  * Return: str
  */
-void print_negative_int(int num, char digits[], int* num_digits)
+void print_negative_int(int num, char digits[12], int* num_digits)
 {
     *num_digits = 0;
 
