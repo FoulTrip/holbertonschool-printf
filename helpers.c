@@ -32,12 +32,26 @@ int print_char(char c)
 int print_string(const char *str)
 {
     int count = 0;
-    while (*str)
+    if (str == NULL)
     {
-        putchar(*str);
-        str++;
-        count++;
+        const char *nullStr = "(null)";
+        while (*nullStr)
+        {
+            putchar(*nullStr);
+            nullStr++;
+            count++;
+        }
     }
+    else
+    {
+        while (*str)
+        {
+            putchar(*str);
+            str++;
+            count++;
+        }
+    }
+
     return (count);
 }
 
@@ -186,14 +200,7 @@ int _printf(const char *format, ...)
                 case 's':
                 {
                     char *str = va_arg(args, char *);
-                    if (str == NULL)
-                    {
-                        count += print_string("(null)");
-                    }
-                    else
-                    {
-                        count += print_string(str);
-                    }
+                    count += print_string(str);
                     break;
                 }
                 case '%':
