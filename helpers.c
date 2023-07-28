@@ -145,7 +145,7 @@ int _printf(const char *format, ...)
                 return (0);
             }
 
-            if (format == NULL)
+            if (*format == NULL)
             {
                 return (0);
             }
