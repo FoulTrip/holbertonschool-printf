@@ -124,6 +124,9 @@ int print_int(int num)
  */
 int _printf(const char *format, ...)
 {
+	if (format == NULL)
+		return (0);
+	
 	int count = 0;
 	va_list args;
 
