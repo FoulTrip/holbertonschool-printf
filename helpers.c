@@ -181,11 +181,10 @@ int _printf(const char *format, ...)
 				count += print_string(va_arg(args, char *));
 			else if (*format == '%')
 				count += print_char('%');
-			else if (*format == 'i' || specifier == 'd')
+			else if (*format == 'i' || *format == 'd')
 				count += print_int(va_arg(args, int));
 			else
-				count += print_char('%');
-				count += print_char(*format);
+				count += print_char('%') + print_char(*format);
 		}
 		else
 			count += print_char(*format);
