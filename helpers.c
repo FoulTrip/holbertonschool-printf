@@ -186,11 +186,6 @@ int _printf(const char *format, ...)
             {
                 return (-1);
             }
-
-            if (!*format)
-            {
-                break;
-            }
             
             specifier = *format;
 
@@ -230,7 +225,7 @@ int _printf(const char *format, ...)
         }
         else
         {
-            count += print_char(*format);
+            break;
         }
 
         format++;
