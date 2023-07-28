@@ -5,10 +5,10 @@
  * 
  * This is the main function that demonstrates
  * the usage of the custom _printf function.
- * It calls _printf multiple times with different 
- * format specifiers and arguments to print various 
+ * It calls _printf multiple times with different
+ * format specifiers and arguments to print various
  * types of data.
- * 
+ *
  * Return: Always returns 0.
  */
 int main(void)
