@@ -130,7 +130,7 @@ int _printf(const char *format, ...)
 	va_start(args, format);
 
 	if (format == NULL)
-		return (0);
+		return (-1);
 
 	count = 0;
 
