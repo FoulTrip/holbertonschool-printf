@@ -73,36 +73,36 @@ int print_int(int num)
 {
 	char digits[12];
 	int digitsNumbers = 0;
-	int isNegative;
+	int count = 0;
 
 	if (num == 0)
 	{
 		digits[digitsNumbers++] = '0';
-
+		count++;
 	}
 	else
 	{
+		int isNegative = 0;
+
 		if (num < 0)
 		{
 			isNegative = 1;
 			num = -num;
+			count++;
 		}
 
 		while (num > 0)
 		{
 			digits[digitsNumbers++] = '0' + (num % 10);
 			num /= 10;
+			count++;
 		}
 
 		if (isNegative)
 		{
 			digits[digitsNumbers++] = '-';
+			count++;
 		}
-	}
-
-	if (digitsNumbers == 0)
-	{
-		digits[digitsNumbers++] = '0';
 	}
 
 	while (digitsNumbers > 0)
@@ -110,7 +110,7 @@ int print_int(int num)
 		putchar(digits[--digitsNumbers]);
 	}
 
-	return (digitsNumbers);
+	return (count);
 }
 
 /**
