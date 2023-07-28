@@ -178,11 +178,6 @@ int _printf(const char *format, ...)
 
     while (*format)
     {
-        if (*format != '%')
-        {
-            break;
-        }
-
         if (*format == '%')
         {
             format++;
