@@ -96,7 +96,7 @@ void print_positive_int(int num, char digits[], int *num_digits)
  *
  * Return: str
  */
-void print_negative_int(int num, char digits[12], int* num_digits)
+void print_negative_int(int num, char digits[12], int *num_digits)
 {
 	*num_digits = 0;
 
@@ -148,7 +148,7 @@ int print_int(int num)
 		putchar(digits[--digitsNumbers]);
 	}
 
-	return digitsNumbers;
+	return (digitsNumbers);
 }
 
 /**
@@ -166,9 +166,7 @@ int print_int(int num)
  */
 int _printf(const char *format, ...)
 {
-	char specifier;
 	int count = 0;
-
 	va_list args;
 	va_start(args, format);
 
@@ -177,46 +175,22 @@ int _printf(const char *format, ...)
 		if (*format == '%')
 		{
 			format++;
-			if (*format == '\0')
-			{
-				return (-1);
-			}
-
-			specifier = *format;
-
-			if (specifier == 'c')
-			{
-				char c = va_arg(args, int);
-				count += print_char(c);
-			}
-			else if (specifier == 's')
-			{
-				char *str = va_arg(args, char *);
-				count += print_string(str);
-			}
-			else if (specifier == '%')
-			{
+			if (*format == 'c')
+				count += print_char(va_arg(args, int));
+			else if (*format == 's')
+				count += print_string(va_arg(args, char *));
+			else if (*format == '%')
 				count += print_char('%');
-			}
-			else if (specifier == 'i' || specifier == 'd')
-			{
-				int num = va_arg(args, int);
-				count += print_int(num);
-			}
+			else if (*format == 'i' || specifier == 'd')
+				count += print_int(va_arg(args, int));
 			else
-			{
 				count += print_char('%');
 				count += print_char(*format);
-			}
 		}
 		else
-		{
 			count += print_char(*format);
-		}
-
 		format++;
 	}
-
 	va_end(args);
 	return (count);
 }
