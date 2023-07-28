@@ -125,14 +125,13 @@ int print_int(int num)
 int _printf(const char *format, ...)
 {
 	int count;
+	va_list args;
+	va_start(args, format);
 
 	if (format == NULL)
 		return (0);
 
 	count = 0;
-	va_list args;
-
-	va_start(args, format);
 
 	while (*format)
 	{
