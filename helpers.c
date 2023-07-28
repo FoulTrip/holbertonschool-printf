@@ -139,6 +139,17 @@ int _printf(const char *format, ...)
         if (*format == '%')
         {
             format++;
+
+            if (*format == '\0')
+            {
+                return (0);
+            }
+
+            if (format == NULL)
+            {
+                return (0);
+            }
+            
             specifier = *format;
 
             switch (specifier)
@@ -152,7 +163,14 @@ int _printf(const char *format, ...)
                 case 's':
                 {
                     char *str = va_arg(args, char *);
-                    count += print_string(str);
+                    if (str == NULL)
+                    {
+                        count += print_string("(null)");
+                    }
+                    else
+                    {
+                        count += print_string(str);
+                    }
                     break;
                 }
                 case '%':
