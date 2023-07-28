@@ -162,11 +162,6 @@ int _printf(const char *format, ...)
             {
                 return (0);
             }
-
-            if (*format == NULL)
-            {
-                return (0);
-            }
             
             specifier = *format;
 
