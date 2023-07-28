@@ -184,38 +184,29 @@ int _printf(const char *format, ...)
 
 			specifier = *format;
 
-			switch (specifier)
+			if (specifier == 'c')
 			{
-				case 'c':
-				{
-					char c = va_arg(args, int);
-					count += print_char(c);
-					break;
-				}
-				case 's':
-				{
-					char *str = va_arg(args, char *);
-					count += print_string(str);
-					break;
-				}
-				case '%':
-				{
-					count += print_char('%');
-					break;
-				}
-				case 'i':
-				case 'd':
-				{
-					int num = va_arg(args, int);
-					count += print_int(num);
-					break;
-				}
-				default:
-				{
-					count += print_char('%');
-					count += print_char(*format);
-					break;
-				}
+				char c = va_arg(args, int);
+				count += print_char(c);
+			}
+			else if (specifier == 's')
+			{
+				char *str = va_arg(args, char *);
+				count += print_string(str);
+			}
+			else if (specifier == '%')
+			{
+				count += print_char('%');
+			}
+			else if (specifier == 'i' || specifier == 'd')
+			{
+				int num = va_arg(args, int);
+				count += print_int(num);
+			}
+			else
+			{
+				count += print_char('%');
+				count += print_char(*format);
 			}
 		}
 		else
