@@ -31,40 +31,30 @@ int print_char(char c)
  */
 int print_string(const char *str)
 {
-<<<<<<< HEAD
 	int count = 0;
-        while (*str)
-        {
-		putchar(*str);
-                str++;
-                count++;
-        }
+
+	if (str == NULL)
+	{
+		const char *nullStr = "(null)";
+
+		while (*nullStr)
+		{
+			putchar(*nullStr);
+			nullStr++;
+			count++;
+		}
+	}
+	else
+	{
+		while (*str)
+		{
+			putchar(*str);
+			str++;
+			count++;
+		}
+	}
 	
 	return (count);
-=======
-    int count = 0;
-    if (str == NULL)
-    {
-        const char *nullStr = "(null)";
-        while (*nullStr)
-        {
-            putchar(*nullStr);
-            nullStr++;
-            count++;
-        }
-    }
-    else
-    {
-        while (*str)
-        {
-            putchar(*str);
-            str++;
-            count++;
-        }
-    }
-
-    return (count);
->>>>>>> 3187d2cb54c36a2d098d23bcdd6cf1006b6d5ebf
 }
 
 /**
@@ -107,25 +97,7 @@ void print_negative_int(int num, char digits[12], int* num_digits)
 {
 	*num_digits = 0;
 
-<<<<<<< HEAD
         if (num == 0)
-=======
-    if (num == 0)
-    {
-        digits[(*num_digits)++] = '0';
-    }
-    else
-    {
-        if (num == INT_MIN)
-        {
-            digits[(*num_digits)++] = '8';
-            num /= 10;
-        }
-
-        num = -num;
-
-        while (num > 0)
->>>>>>> 3187d2cb54c36a2d098d23bcdd6cf1006b6d5ebf
         {
 		digits[(*num_digits)++] = '0';
         }
@@ -156,7 +128,6 @@ void print_negative_int(int num, char digits[12], int* num_digits)
  */
 int print_int(int num)
 {
-<<<<<<< HEAD
 	char digits[12];
 	int digitsNumbers;
 
@@ -175,29 +146,6 @@ int print_int(int num)
         }
 	
 	return digitsNumbers;
-=======
-    char digits[12];
-    int digitsNumbers;
-    int count;
-
-    if (num >= 0)
-    {
-        print_positive_int(num, digits, &digitsNumbers);
-    }
-    else
-    {
-        print_negative_int(num, digits, &digitsNumbers);
-    }
-
-    count = digitsNumbers;
-
-    while (digitsNumbers > 0)
-    {
-        putchar(digits[--digitsNumbers]);
-    }
-    
-    return count;
->>>>>>> 3187d2cb54c36a2d098d23bcdd6cf1006b6d5ebf
 }
 
 /**
@@ -215,7 +163,6 @@ int print_int(int num)
  */
 int _printf(const char *format, ...)
 {
-<<<<<<< HEAD
 	char specifier;
         int count = 0;
 
@@ -275,67 +222,6 @@ int _printf(const char *format, ...)
 
 		format++;
 	}
-
 	va_end(args);
 	return (count);
-=======
-    char specifier;
-    int count = 0;
-
-    va_list args;
-    va_start(args, format);
-
-    while (*format)
-    {
-        if (*format == '%')
-        {
-            format++;
-
-            if (*format == '\0')
-            {
-                return (-1);
-            }
-            
-            specifier = *format;
-
-            switch (specifier)
-            {
-                case 'c':
-                {
-                    char c = va_arg(args, int);
-                    count += print_char(c);
-                    break;
-                }
-                case 's':
-                {
-                    char *str = va_arg(args, char *);
-                    count += print_string(str);
-                    break;
-                }
-                case '%':
-                {
-                count += print_char('%');
-                break;
-            }
-            case 'i':
-            case 'd':
-            {
-                int num = va_arg(args, int);
-                count += print_int(num);
-                break;
-            }
-            default:
-            {
-                count += print_char('%');
-                count += print_char(*format);
-                break;
-            }
-            }
-        }
-        else
-        {
-            count += print_char(*format);
-        }
->>>>>>> 3187d2cb54c36a2d098d23bcdd6cf1006b6d5ebf
-
 }
