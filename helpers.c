@@ -123,12 +123,14 @@ int print_int(int num)
         print_negative_int(num, digits, &digitsNumbers);
     }
 
+    int count = digitsNumbers;
+
     while (digitsNumbers > 0)
     {
         putchar(digits[--digitsNumbers]);
     }
     
-    return digitsNumbers;
+    return count;
 }
 
 /**
