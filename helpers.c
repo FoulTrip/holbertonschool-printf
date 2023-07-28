@@ -39,7 +39,7 @@ int null_string(const char *str)
         count++;
     }
 
-    return count
+    return count;
 }
 
 /**
