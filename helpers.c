@@ -12,8 +12,8 @@
  */
 int print_char(char c)
 {
-    putchar(c);
-    return (1);
+	putchar(c);
+	return (1);
 }
 
 /**
@@ -30,53 +30,54 @@ int print_char(char c)
  */
 int print_string(const char *str)
 {
-    int count = 0;
-    while (*str)
-    {
-        putchar(*str);
-        str++;
-        count++;
-    }
-    return (count);
+	int count = 0;
+        while (*str)
+        {
+		putchar(*str);
+                str++;
+                count++;
+        }
+	
+	return (count);
 }
 
 void print_positive_int(int num, char digits[], int *num_digits)
 {
-    *num_digits = 0;
-
-    if (num == 0)
-    {
-        digits[(*num_digits)++] = '0';
-    }
-    else
-    {
-        while (num > 0)
+	*num_digits = 0;
+	
+	if (num == 0)
         {
-            digits[(*num_digits)++] = '0' + (num % 10);
-            num /= 10;
+		digits[(*num_digits)++] = '0';
         }
-    }
+        else
+        {
+		while (num > 0)
+                {
+			digits[(*num_digits)++] = '0' + (num % 10);
+                        num /= 10;
+                }
+        }
 }
 
 void print_negative_int(int num, char digits[], int* num_digits)
 {
-    *num_digits = 0;
+	*num_digits = 0;
 
-    if (num == 0)
-    {
-        digits[(*num_digits)++] = '0';
-    }
-    else
-    {
-        num = -num;
-
-        while (num > 0)
+        if (num == 0)
         {
-            digits[(*num_digits)++] = '0' + (num % 10);
-            num /= 10;
+		digits[(*num_digits)++] = '0';
         }
-
-        digits[(*num_digits)++] = '-';
+        else
+        {
+		num = -num;
+		
+		while (num > 0)
+		{
+			digits[(*num_digits)++] = '0' + (num % 10);
+                        num /= 10;
+                }
+		
+		digits[(*num_digits)++] = '-';
     }
 }
 
@@ -93,24 +94,24 @@ void print_negative_int(int num, char digits[], int* num_digits)
  */
 int print_int(int num)
 {
-    char digits[12];
-    int digitsNumbers;
+	char digits[12];
+	int digitsNumbers;
 
-    if (num >= 0)
-    {
-        print_positive_int(num, digits, &digitsNumbers);
-    }
-    else
-    {
-        print_negative_int(num, digits, &digitsNumbers);
-    }
-
-    while (digitsNumbers > 0)
-    {
-        putchar(digits[--digitsNumbers]);
-    }
-    
-    return digitsNumbers;
+        if (num >= 0)
+        {
+		print_positive_int(num, digits, &digitsNumbers);
+        }
+        else
+        {
+		print_negative_int(num, digits, &digitsNumbers);
+        }
+	
+	while (digitsNumbers > 0)
+        {
+		putchar(digits[--digitsNumbers]);
+        }
+	
+	return digitsNumbers;
 }
 
 /**
@@ -128,61 +129,67 @@ int print_int(int num)
  */
 int _printf(const char *format, ...)
 {
-    char specifier;
-    int count = 0;
+	char specifier;
+        int count = 0;
 
-    va_list args;
-    va_start(args, format);
+        va_list args;
+        va_start(args, format);
 
-    while (*format)
-    {
-        if (*format == '%')
-        {
-            format++;
-            specifier = *format;
+        while (*format)
+	{
+		if (*format == '%')
+		{
+			format++;
+			if (*format = '\0')
+			{
+				return (-1)
+			}
 
-            switch (specifier)
-            {
-                case 'c':
-                {
-                    char c = va_arg(args, int);
-                    count += print_char(c);
-                    break;
-                }
-                case 's':
-                {
-                    char *str = va_arg(args, char *);
-                    count += print_string(str);
-                    break;
-                }
-                case '%':
-                {
-                count += print_char('%');
-                break;
-            }
-            case 'i':
-            case 'd':
-            {
-                int num = va_arg(args, int);
-                count += print_int(num);
-                break;
-            }
-            default:
-            {
-                count += print_char('%');
-                count += print_char(*format);
-                break;
-            }
-            }
-        }
-        else
-        {
-            count += print_char(*format);
-        }
+			specifier = *format;
 
-        format++;
-    }
+			switch (specifier)
+			{
+				case 'c':
+				{
+					char c = va_arg(args, int);
+					count += print_char(c);
+					break;
+				}
+				case 's':
+				{
+					char *str = va_arg(args, char *);
+					count += print_string(str);
+					break;
+				}
+				case '%':
+				{
+					count += print_char('%');
+					break;
+				}
+				case 'i':
+				case 'd':
+				{
+					int num = va_arg(args, int);
+					count += print_int(num);
+					break;
+				}
+				default:
+				{
+					count += print_char('%');
+					count += print_char(*format);
+					break;
+				}
+			}
+		}
+		else
+		{
+			count += print_char(*format);
+		}
 
-    va_end(args);
-    return (count);
+		format++;
+	}
+
+	va_end(args);
+	return (count);
+
 }
