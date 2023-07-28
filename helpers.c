@@ -73,6 +73,7 @@ int print_int(int num)
 {
 	char digits[12];
 	int digitsNumbers = 0;
+	int isNegative;
 
 	if (num == 0)
 	{
@@ -81,8 +82,6 @@ int print_int(int num)
 	}
 	else
 	{
-		int isNegative = 0;
-
 		if (num < 0)
 		{
 			isNegative = 1;
