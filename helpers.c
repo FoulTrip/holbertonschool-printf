@@ -18,31 +18,6 @@ int print_char(char c)
 }
 
 /**
- * null_string - Handle NULL strings by providing an alternative string
- * @str: Pointer to the string to be printed
- * 
- * This function handles NULL strings by providing an alternative string "(null)"
- * that will be printed to the standard output.
- * 
- * Return: The number of characters printed
- *
- */
-int null_string(const char *str)
-{
-    int count = 0;
-    const char *alternative = "(NULL)";
-
-    while (*alternative)
-    {
-        putchar(*alternative);
-        alternative++;
-        count++;
-    }
-
-    return count;
-}
-
-/**
  * print_string - Print a string to the output
  * @str: Pointer to the string to be printed
  *
@@ -213,7 +188,7 @@ int _printf(const char *format, ...)
                     char *str = va_arg(args, char *);
                     if (str == NULL)
                     {
-                        count += null_string(str);
+                        count += print_string("(null)");
                     }
                     else
                     {
