@@ -77,7 +77,7 @@ int print_int(int num)
 	if (num == 0)
 	{
 		digits[digitsNumbers++] = '0';
-		
+
 	}
 	else
 	{
@@ -100,7 +100,7 @@ int print_int(int num)
 			digits[digitsNumbers++] = '-';
 		}
 	}
-	
+
 	while (digitsNumbers > 0)
 	{
 		putchar(digits[--digitsNumbers]);
@@ -126,7 +126,7 @@ int _printf(const char *format, ...)
 {
 	int count = 0;
 	va_list args;
-	va_start(args, format);
+	va_start (args, format);
 
 	while (*format)
 	{
