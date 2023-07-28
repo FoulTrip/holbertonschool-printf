@@ -101,6 +101,11 @@ int print_int(int num)
 		}
 	}
 
+	if (digitsNumbers == 0)
+	{
+		digits[digitsNumbers++] = '0';
+	}
+
 	while (digitsNumbers > 0)
 	{
 		putchar(digits[--digitsNumbers]);
