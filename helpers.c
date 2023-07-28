@@ -87,7 +87,7 @@ void print_negative_int(int num, char digits[12], int* num_digits)
     }
     else
     {
-        if (num == )
+        if (num == INT_MIN)
         {
             digits[(*num_digits)++] = '8';
             num /= 10;
