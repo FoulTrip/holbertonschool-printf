@@ -59,66 +59,6 @@ int print_string(const char *str)
 }
 
 /**
- * print_positive_int - convert a positive integer
- * @num: Number receive
- * @digits: The digits of the converted number will be stored
- * @num_digits: Initializes the num_digits variable pointed to
- *              by the pointer to zero, to count the number of
- *              digits of the converted number.
- *
- * Return: str
- */
-void print_positive_int(int num, char digits[], int *num_digits)
-{
-	*num_digits = 0;
-
-	if (num == 0)
-	{
-		digits[(*num_digits)++] = '0';
-	}
-	else
-	{
-		while (num > 0)
-		{
-			digits[(*num_digits)++] = '0' + (num % 10);
-			num /= 10;
-		}
-	}
-}
-
-/**
- * print_negative_int - convert a negative integer
- * @num: Number receive
- * @digits: The digits of the converted number will be stored
- * @num_digits: Initializes the num_digits variable pointed to
- *              by the pointer to zero, to count the number of
- *              digits of the converted number.
- *
- * Return: str
- */
-void print_negative_int(int num, char digits[12], int *num_digits)
-{
-	*num_digits = 0;
-
-	if (num == 0)
-	{
-		digits[(*num_digits)++] = '0';
-	}
-	else
-	{
-		num = -num;
-
-		while (num > 0)
-		{
-			digits[(*num_digits)++] = '0' + (num % 10);
-			num /= 10;
-		}
-
-		digits[(*num_digits)++] = '-';
-	}
-}
-
-/**
  * print_int - Prints an integer to the output
  * @num: The integer to be printed
  *
