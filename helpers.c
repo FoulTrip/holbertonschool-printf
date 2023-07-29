@@ -72,34 +72,41 @@ int print_int(int num)
     char digits[12];
     int digitsNumbers = 0;
     int count = 0;
+    int isNegative = 0; 
 
     if (num == 0)
     {
-	    putchar('0');
-	    return (1);
+	    digits[digitsNumbers++] = '0';
+    }
+    else
+    {
+	    if (num == INT_MIN)
+	    {
+		    isNegative = 1;
+		    num++;
+	    }
+
+	    if (num < 0)
+	    {
+		    isNegative = 1;
+		    num = -num;
+	    }
+
+	    while (num > 0)
+	    {
+		    digits[digitsNumbers++] = '0' + (num % 10);
+		    num /= 10;
+	    }
     }
 
-    if (num == INT_MIN)
-    {
-	    digits[digitsNumbers++] = '8';
-	    num = -(num / 10);
-    }
-    else if (num < 0)
-    {
-	    putchar('-');
-	    num = -num;
-    }
+    if (isNegative)
+	    count += print_char('-');
 
-    while (num > 0)
-    {
-	    digits[digitsNumbers++] = '0' + (num % 10);
-	    num /= 10;
-    }
+    count += digitsNumbers;
 
     while (digitsNumbers > 0)
     {
 	    putchar(digits[--digitsNumbers]);
-	    count++;
     }
 
     return (count);
@@ -130,54 +137,60 @@ int _printf(const char *format, ...)
     {
         if (*format != '%')
         {
-	    count += print_char(*format);
             break;
         }
-	else
-	{
-		format++;
 
-		if (*format == '\0')
-                {
-			va_end(args);
-			return (-1);
-                }
+        if (*format == '%')
+        {
+            format++;
 
-		specifier = *format;
-
-		if (specifier == 'c')
-		{
-			char c = va_arg(args, int);
-			count += print_char(c);
-			break;
-		}
-		else if (specifier == 's')
-		{
-			char *str = va_arg(args, char *);
-			count += print_string(str);
-			break;
-		}
-		else if (specifier == '%')
-		{
-			count += print_char('%');
-			break;
-		}
-		else if (specifier == 'i' || specifier == 'd')
-		{
-			int num = va_arg(args, int);
-			count += print_int(num);
-			break;
-		}
-		else
-		{
-			count += print_char('%');
-			count += print_char(*format);
-			break;
-		}
+            if (*format == '\0')
+            {
+                return (-1);
             }
-	    
-	    format++;
+            
+            specifier = *format;
+
+            switch (specifier)
+            {
+                case 'c':
+                {
+                    char c = va_arg(args, int);
+                    count += print_char(c);
+                    break;
+                }
+                case 's':
+                {
+                    char *str = va_arg(args, char *);
+                    count += print_string(str);
+                    break;
+                }
+                case '%':
+                {
+                count += print_char('%');
+                break;
+            }
+            case 'i':
+            case 'd':
+            {
+                int num = va_arg(args, int);
+                count += print_int(num);
+                break;
+            }
+            default:
+            {
+                count += print_char('%');
+                count += print_char(*format);
+                break;
+            }
+            }
         }
+        else
+        {
+            count += print_char(*format);
+        }
+
+        format++;
     }
 
     va_end(args);
