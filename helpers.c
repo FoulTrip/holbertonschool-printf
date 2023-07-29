@@ -91,11 +91,6 @@ int print_int(int num)
 		    num /= 10;
 	    }
 
-	    if (num < 0)
-	    {
-		    digits[digitsNumbers++] = '-';
-	    }
-
 	    while (num > 0)
 	    {
 		    digits[digitsNumbers++] = '0' + (num % 10);
