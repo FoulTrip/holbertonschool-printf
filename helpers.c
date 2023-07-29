@@ -69,7 +69,7 @@ int print_string(const char *str)
 int print_int(int num)
 {
     char digits[12];
-    int digitsNumbers;
+    int digitsNumbers = 0;
     int count = 0;
 
     if (num == 0)
