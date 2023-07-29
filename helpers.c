@@ -83,7 +83,8 @@ int print_int(int num)
 	    if (num == INT_MIN)
 	    {
 		    isNegative = 1;
-		    num++;
+		    digits[digitsNumbers++] = '0' + (-(num % 10));
+		    num /= 10;
 	    }
 
 	    if (num < 0)
