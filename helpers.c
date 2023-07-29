@@ -73,12 +73,11 @@ int print_int(int num)
 {
 	char digits[12];
 	int digitsNumbers = 0;
-	int count = 0;
 
 	if (num == 0)
 	{
 		digits[digitsNumbers++] = '0';
-		count++;
+
 	}
 	else
 	{
@@ -88,20 +87,17 @@ int print_int(int num)
 		{
 			isNegative = 1;
 			num = -num;
-			count++;
 		}
 
 		while (num > 0)
 		{
 			digits[digitsNumbers++] = '0' + (num % 10);
 			num /= 10;
-			count++;
 		}
 
 		if (isNegative)
 		{
 			digits[digitsNumbers++] = '-';
-			count++;
 		}
 	}
 
@@ -110,7 +106,7 @@ int print_int(int num)
 		putchar(digits[--digitsNumbers]);
 	}
 
-	return (count);
+	return (digitsNumbers);
 }
 
 /**
@@ -128,13 +124,15 @@ int print_int(int num)
  */
 int _printf(const char *format, ...)
 {
-	int count = 0;
+	int count;
 	va_list args;
 
 	va_start(args, format);
 
 	if (format == NULL)
 		return (-1);
+
+	count = 0;
 
 	while (*format)
 	{
