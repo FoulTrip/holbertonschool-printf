@@ -79,6 +79,12 @@ int print_int(int num)
     else
     {
 	    if (num == INT_MIN)
+            {
+		    digits[digitsNumbers++] = '0' + (abs(num % 10));
+		    num /= 10;
+	    }
+
+	    if (num == INT_MIN)
 	    {
 		    digits[digitsNumbers++] = '8';
 		    num /= 10;
