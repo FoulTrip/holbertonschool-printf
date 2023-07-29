@@ -77,34 +77,35 @@ int print_int(int num)
     {
 	    digits[digitsNumbers++] = '0';
     }
+    else if (num == INT_MIN)
+    {
+	    count += print_char('-');
+	    digits[digitsNumbers++] = '2';
+	    num %= 1000000000;
+	    num = -num;
+    }
     else
     {
-	    if (num == INT_MIN)
-            {
-		    digits[digitsNumbers++] = '0' + (abs(num % 10));
-		    num /= 10;
-	    }
-
-	    if (num == INT_MIN)
+	    if (num < 0)
 	    {
-		    digits[digitsNumbers++] = '8';
-		    num /= 10;
-	    }
-
-	    while (num > 0)
-	    {
-		    digits[digitsNumbers++] = '0' + (num % 10);
-		    num /= 10;
+		    count += print_char('-');
+		    num = -num;
 	    }
     }
 
-    count = digitsNumbers;
+    while (num > 0)
+    {
+        putchar[digitsNumbers] = '0' + (num % 10);
+	num /= 10;
+    }
 
+    count += digitsNumbers;
+	
     while (digitsNumbers > 0)
     {
-        putchar(digits[--digitsNumbers]);
+	    putchar(digits[--digitsNumbers]);
     }
-    
+        
     return (count);
 }
 
