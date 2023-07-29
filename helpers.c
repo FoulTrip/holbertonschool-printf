@@ -2,6 +2,7 @@
 #include <stdarg.h>
 #include "main.h"
 #include <limits.h>
+#include <stdlib.h>
 
 /**
  * print_char - Print a character to the output
