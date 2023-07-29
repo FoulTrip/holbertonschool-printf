@@ -72,6 +72,7 @@ int print_int(int num)
     char digits[12];
     int digitsNumbers = 0;
     int count = 0;
+    int isNegative = 0; 
 
     if (num == 0)
     {
@@ -81,13 +82,13 @@ int print_int(int num)
     {
 	    if (num == INT_MIN)
 	    {
-		    digits[digitsNumbers++] = '8';
-		    num = -(num / 10);
+		    isNegative = 1;
+		    num++;
 	    }
 
 	    if (num < 0)
 	    {
-		    digits[digitsNumbers++] = '-';
+		    isNegative = 1;
 		    num = -num;
 	    }
 
@@ -98,10 +99,15 @@ int print_int(int num)
 	    }
     }
 
+    if (isNegative)
+	    count += print_char('-');
+
     count += digitsNumbers;
 
     while (digitsNumbers > 0)
+    {
 	    putchar(digits[--digitsNumbers]);
+    }
 
     return (count);
 }
