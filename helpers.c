@@ -94,7 +94,6 @@ int print_int(int num)
 	    if (num < 0)
 	    {
 		    digits[digitsNumbers++] = '-';
-		    num = -num;
 	    }
 
 	    while (num > 0)
