@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdarg.h>
 #include "main.h"
+#include <limits.h>
 
 /**
  * print_char - Print a character to the output
@@ -31,12 +32,26 @@ int print_char(char c)
 int print_string(const char *str)
 {
     int count = 0;
-    while (*str)
+    if (str == NULL)
     {
-        putchar(*str);
-        str++;
-        count++;
+        const char *nullStr = "(null)";
+        while (*nullStr)
+        {
+            putchar(*nullStr);
+            nullStr++;
+            count++;
+        }
     }
+    else
+    {
+        while (*str)
+        {
+            putchar(*str);
+            str++;
+            count++;
+        }
+    }
+
     return (count);
 }
 
@@ -76,7 +91,7 @@ void print_positive_int(int num, char digits[], int *num_digits)
  *              digits of the converted number.
  * Return: str
  */
-void print_negative_int(int num, char digits[], int* num_digits)
+void print_negative_int(int num, char digits[12], int* num_digits)
 {
     *num_digits = 0;
 
@@ -86,6 +101,12 @@ void print_negative_int(int num, char digits[], int* num_digits)
     }
     else
     {
+        if (num == INT_MIN)
+        {
+            digits[(*num_digits)++] = '8';
+            num /= 10;
+        }
+
         num = -num;
 
         while (num > 0)
@@ -113,6 +134,7 @@ int print_int(int num)
 {
     char digits[12];
     int digitsNumbers;
+    int count;
 
     if (num >= 0)
     {
@@ -123,12 +145,14 @@ int print_int(int num)
         print_negative_int(num, digits, &digitsNumbers);
     }
 
+    count = digitsNumbers;
+
     while (digitsNumbers > 0)
     {
         putchar(digits[--digitsNumbers]);
     }
     
-    return digitsNumbers;
+    return count;
 }
 
 /**
@@ -154,13 +178,18 @@ int _printf(const char *format, ...)
 
     while (*format)
     {
+        if (*format != '%')
+        {
+            break;
+        }
+
         if (*format == '%')
         {
             format++;
 
             if (*format == '\0')
             {
-                return (0);
+                return (-1);
             }
             
             specifier = *format;
@@ -176,14 +205,7 @@ int _printf(const char *format, ...)
                 case 's':
                 {
                     char *str = va_arg(args, char *);
-                    if (str == NULL)
-                    {
-                        count += print_string("(null)");
-                    }
-                    else
-                    {
-                        count += print_string(str);
-                    }
+                    count += print_string(str);
                     break;
                 }
                 case '%':
