@@ -130,60 +130,54 @@ int _printf(const char *format, ...)
     {
         if (*format != '%')
         {
+	    count += print_char(*format);
             break;
         }
+	else
+	{
+		format++;
 
-        if (*format == '%')
-        {
-            format++;
-
-            if (*format == '\0')
-            {
-                return (-1);
-            }
-            
-            specifier = *format;
-
-            switch (specifier)
-            {
-                case 'c':
+		if (*format == '\0')
                 {
-                    char c = va_arg(args, int);
-                    count += print_char(c);
-                    break;
+			va_end(args);
+			return (-1);
                 }
-                case 's':
-                {
-                    char *str = va_arg(args, char *);
-                    count += print_string(str);
-                    break;
-                }
-                case '%':
-                {
-                count += print_char('%');
-                break;
-            }
-            case 'i':
-            case 'd':
-            {
-                int num = va_arg(args, int);
-                count += print_int(num);
-                break;
-            }
-            default:
-            {
-                count += print_char('%');
-                count += print_char(*format);
-                break;
-            }
-            }
-        }
-        else
-        {
-            count += print_char(*format);
-        }
 
-        format++;
+		specifier = *format;
+
+		if (specifier == 'c')
+		{
+			char c = va_arg(args, int);
+			count += print_char(c);
+			break;
+		}
+		else if (specifier == 's')
+		{
+			char *str = va_arg(args, char *);
+			count += print_string(str);
+			break;
+		}
+		else if (specifier == '%')
+		{
+			count += print_char('%');
+			break;
+		}
+		else if (specifier == 'i' || specifier == 'd')
+		{
+			int num = va_arg(args, int);
+			count += print_int(num);
+			break;
+		}
+		else
+		{
+			count += print_char('%');
+			count += print_char(*format);
+			break;
+		}
+            }
+	    
+	    format++;
+        }
     }
 
     va_end(args);
