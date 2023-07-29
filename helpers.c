@@ -127,72 +127,37 @@ int print_int(int num)
  */
 int _printf(const char *format, ...)
 {
-    char specifier;
-    int count = 0;
+	int count = 0;
+	va_list args;
 
-    va_list args;
-    va_start(args, format);
+	va_start(args, format);
 
-    while (*format)
-    {
-        if (*format != '%')
-        {
-            break;
-        }
+	if (format == NULL)
+		return (-1);
 
-        if (*format == '%')
-        {
-            format++;
+	while (*format)
+	{
+		if (*format == '%')
+		{
+			format++;
+			if (*format == '\0')
+				return (-1);
 
-            if (*format == '\0')
-            {
-                return (-1);
-            }
-            
-            specifier = *format;
-
-            switch (specifier)
-            {
-                case 'c':
-                {
-                    char c = va_arg(args, int);
-                    count += print_char(c);
-                    break;
-                }
-                case 's':
-                {
-                    char *str = va_arg(args, char *);
-                    count += print_string(str);
-                    break;
-                }
-                case '%':
-                {
-                count += print_char('%');
-                break;
-            }
-            case 'i':
-            case 'd':
-            {
-                int num = va_arg(args, int);
-                count += print_int(num);
-                break;
-            }
-            default:
-            {
-                count += print_char('%');
-                count += print_char(*format);
-                break;
-            }
-            }
-        }
-        else
-        {
-            count += print_char(*format);
-        }
-
-        format++;
-    }
-
-    va_end(args);
-    return (count);
+			if (*format == 'c')
+				count += print_char(va_arg(args, int));
+			else if (*format == 's')
+				count += print_string(va_arg(args, char *));
+			else if (*format == '%')
+				count += print_char('%');
+			else if (*format == 'i' || *format == 'd')
+				count += print_int(va_arg(args, int));
+			else
+				count += print_char('%') + print_char(*format);
+		}
+		else
+			count += print_char(*format);
+		format++;
+	}
+	va_end(args);
+	return (count);
 }
