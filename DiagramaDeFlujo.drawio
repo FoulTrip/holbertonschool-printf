@@ -1,6 +1,6 @@
-<mxfile host="app.diagrams.net" modified="2023-07-31T04:32:48.141Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0.0.0 Safari/537.36" etag="WIibjrzmUshm4ZcZMp58" version="21.6.6" type="github">
+<mxfile host="app.diagrams.net" modified="2023-07-31T04:41:06.227Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0.0.0 Safari/537.36" etag="Xz59U1dr35X8lr04lsHs" version="21.6.6" type="github">
   <diagram id="C5RBs43oDa-KdzZeNtuy" name="Page-1">
-    <mxGraphModel dx="1104" dy="574" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="1153" dy="438" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="WIyWlLk6GJQsqaUBKTNV-0" />
         <mxCell id="WIyWlLk6GJQsqaUBKTNV-1" parent="WIyWlLk6GJQsqaUBKTNV-0" />
@@ -362,8 +362,14 @@
         <mxCell id="k4tp6VtG_gmkp5LK19nQ-22" value="Incrementar count con la impresión de la cadena de la lista de argumentos" style="whiteSpace=wrap;html=1;fillColor=#182E3E;strokeColor=#FFFFFF;fontColor=#FFFFFF;labelBackgroundColor=none;rounded=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
           <mxGeometry x="1254.38" y="2797.5" width="450.01" height="60" as="geometry" />
         </mxCell>
+        <mxCell id="k4tp6VtG_gmkp5LK19nQ-27" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="k4tp6VtG_gmkp5LK19nQ-24" target="k4tp6VtG_gmkp5LK19nQ-26">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
         <mxCell id="k4tp6VtG_gmkp5LK19nQ-24" value="De lo contrario, si el nuevo carácter apuntado por format es &#39;%&#39;" style="rhombus;whiteSpace=wrap;html=1;fillColor=#182E3E;strokeColor=#FFFFFF;fontColor=#FFFFFF;labelBackgroundColor=none;rounded=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
           <mxGeometry x="824.38" y="2960" width="397.96" height="127.5" as="geometry" />
+        </mxCell>
+        <mxCell id="k4tp6VtG_gmkp5LK19nQ-26" value="- Incrementar `count` con la impresion del caracter &#39;%&#39;&amp;nbsp;&lt;br&gt;-&amp;nbsp; Incrementar `count` con la impresion del caracter apuntado por `format`" style="whiteSpace=wrap;html=1;fillColor=#182E3E;strokeColor=#FFFFFF;fontColor=#FFFFFF;labelBackgroundColor=none;rounded=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="1441.88" y="2993.75" width="448.12" height="60" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
